@@ -2,7 +2,7 @@
 
 # Script to get the plugin slug from composer.json file.
 
-SOURCE_PATH=${1:-$(pwd)}
+SOURCE_PATH=${1:-/project}
 COMPOSER_FILE="${SOURCE_PATH}/composer.json"
 
 usage() {

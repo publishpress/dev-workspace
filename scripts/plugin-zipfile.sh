@@ -3,7 +3,7 @@
 # Script to get the plugin ZIP file name in the dist dir.
 
 # Set the SOURCE_PATH variable to the current directory or use the passed argument.
-SOURCE_PATH=${1:-$(pwd)}
+SOURCE_PATH=${1:-/project}
 
 # Show the usage information.
 usage() {

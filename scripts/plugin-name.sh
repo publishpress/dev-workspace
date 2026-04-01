@@ -3,7 +3,7 @@
 # Script to get the plugin name from composer.json file.
 
 # Set the SOURCE_PATH variable to the current directory or use the passed argument.
-SOURCE_PATH=${1:-$(pwd)}
+SOURCE_PATH=${1:-/project}
 
 # Show the usage information.
 usage() {

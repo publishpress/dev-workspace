@@ -26,7 +26,7 @@ done
 set -- "${pack_args[@]}"
 
 command=${1:-}
-source_path=$(pwd)
+source_path="/project"
 dist_path="${source_path}/dist"
 cols=$(terminal-cols.sh)
 
