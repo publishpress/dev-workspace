@@ -82,6 +82,42 @@ run_indented() {
     echo ""
 }
 
+check_composer_extra_info() {
+    echo "Checking composer extra info"
+    local source_path=$1
+
+    local composer_file="${source_path}/composer.json"
+    if [ ! -f "$composer_file" ]; then
+        echo "Error: $composer_file does not exist."
+        exit 1
+    fi
+
+    # Check if jq is installed for robust JSON parsing
+    if ! command -v jq >/dev/null 2>&1; then
+        echo "Error: jq is required to validate extra fields in composer.json."
+        exit 1
+    fi
+
+    # Check for required fields in the "extra" object (paths are dot notation; jq keys are the segment after "extra.")
+    local missing_fields=()
+    local required_fields=("extra.plugin-name" "extra.plugin-slug" "extra.plugin-folder" "extra.plugin-lang-domain" "extra.plugin-github-repo" "extra.plugin-composer-package")
+    for field in "${required_fields[@]}"; do
+        local value
+        local extra_key="${field#extra.}"
+        value=$(jq -r --arg k "$extra_key" '.extra[$k] // empty' "$composer_file")
+        if [ -z "$value" ] || [ "$value" = "null" ]; then
+            missing_fields+=("$field")
+        fi
+    done
+
+    if [ "${#missing_fields[@]}" -ne 0 ]; then
+        echo "Error: The following required 'extra' fields are missing in $composer_file: ${missing_fields[*]}"
+        exit 1
+    fi
+
+    echo "All required 'extra' fields are present in $composer_file."
+}
+
 command_dir() {
     echo-command-header.sh "Cleaning dist directory"
     clean-dist.sh ${tmp_build_dir}
@@ -198,6 +234,7 @@ command_zip() {
 case "${command}" in
 "dir")
     set-git-config.sh ${source_path}
+    check_composer_extra_info ${source_path}
     command_dir
 
     echo-separator.sh
@@ -210,6 +247,7 @@ case "${command}" in
     ;;
 "zip")
     set-git-config.sh ${source_path}
+    check_composer_extra_info ${source_path}
     command_dir
     command_zip
 

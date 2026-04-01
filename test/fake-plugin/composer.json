@@ -1,0 +1,26 @@
+{
+    "name": "publishpress/fake-plugin",
+    "type": "wordpress-plugin",
+    "version": "1.0.0",
+    "description": "A fake WordPress plugin used to test publishpress/dev-workspace locally",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "publishpress/dev-workspace": "dev-master",
+        "wp-coding-standards/wpcs": "^3",
+        "publishpress/translations": "^1"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "../.."
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "publishpress/dev-workspace": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
