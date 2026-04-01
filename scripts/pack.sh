@@ -98,15 +98,15 @@ command_dir() {
         fi
     }
 
-    add_pre_merge "${source_path}/dev-workspace/.rsync-filters-pre-build.default"
+    add_pre_merge "${DEV_WORKSPACE_DIR}/.rsync-filters-pre-build.default"
     if [[ "${include_debug}" != "1" ]]; then
-        add_pre_merge "${source_path}/dev-workspace/.rsync-filters-pre-build.strip-debug"
+        add_pre_merge "${DEV_WORKSPACE_DIR}/.rsync-filters-pre-build.strip-debug"
         add_pre_merge "${source_path}/.rsync-filters-pre-build.strip-debug"
     fi
     add_pre_merge "${source_path}/.rsync-filters-pre-build"
 
     if [[ "${pre_merge_count}" -eq 0 ]]; then
-        echo-error.sh "No pre-build rsync filter files found. Add dev-workspace/.rsync-filters-pre-build.default and/or .rsync-filters-pre-build."
+        echo-error.sh "No pre-build rsync filter files found. Add vendor/publishpress/dev-workspace/.rsync-filters-pre-build.default and/or .rsync-filters-pre-build."
         exit 998
     fi
 
@@ -136,11 +136,11 @@ command_dir() {
         fi
     }
 
-    add_post_merge "${source_path}/dev-workspace/.rsync-filters-post-build.default"
+    add_post_merge "${DEV_WORKSPACE_DIR}/.rsync-filters-post-build.default"
     add_post_merge "${source_path}/.rsync-filters-post-build"
 
     if [[ "${post_merge_count}" -eq 0 ]]; then
-        echo-error.sh "No post-build rsync filter files found. Add dev-workspace/.rsync-filters-post-build.default and/or .rsync-filters-post-build."
+        echo-error.sh "No post-build rsync filter files found. Add vendor/publishpress/dev-workspace/.rsync-filters-post-build.default and/or .rsync-filters-post-build."
         exit 1003
     fi
 

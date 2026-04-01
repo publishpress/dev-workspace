@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/env-init.sh"
-cd "$REPO_ROOT/dev-workspace"
+cd "$DEV_WORKSPACE_DIR"
 
 SERVICE_NAME=$1
 shift 1

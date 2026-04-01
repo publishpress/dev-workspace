@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/env-init.sh"
-cd "$REPO_ROOT/dev-workspace"
+cd "$DEV_WORKSPACE_DIR"
 
 if ! docker info &>/dev/null; then
   echo -e "\033[0;31mError: Docker is not running. Please start Docker and try again.\033[0m"

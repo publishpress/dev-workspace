@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 DEV_SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$DEV_SCRIPTS_DIR/../.." && pwd)"
+DEV_WORKSPACE_DIR="$(cd "$DEV_SCRIPTS_DIR/.." && pwd)"
+REPO_ROOT="$(cd "$DEV_WORKSPACE_DIR/../../../.." && pwd)"
 
 if [[ ! -f "$REPO_ROOT/.env" ]]; then
     echo "Error: .env file not found. Run 'cp .env.example .env' to create it."
