@@ -6,6 +6,14 @@
     "license": "GPL-2.0-or-later",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "extra": {
+        "plugin-name": "Fake Plugin",
+        "plugin-slug": "fake-plugin",
+        "plugin-folder": "fake-plugin",
+        "plugin-lang-domain": "fake-plugin",
+        "plugin-github-repo": "publishpress/fake-plugin",
+        "plugin-composer-package": "publishpress/fake-plugin"
+    },
     "require-dev": {
         "publishpress/dev-workspace": "dev-development",
         "wp-coding-standards/wpcs": "^3",
