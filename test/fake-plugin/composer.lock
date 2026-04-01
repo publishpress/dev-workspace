@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4fc1f588489cdc9604f21757e5f3678",
+    "content-hash": "94f8dcba461b8b40bfb01de84c251dc7",
     "packages": [],
     "packages-dev": [
         {
@@ -766,11 +766,11 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "dev-master",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "../..",
-                "reference": "ad1fb0812ae66da69aab8144f5955b930e669ee0"
+                "reference": "c67622e280d6422cb9b4468a95f34e94cb667d47"
             },
             "require": {
                 "composer-plugin-api": "^2.0"
@@ -1097,7 +1097,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Shared Composer scripts for PublishPress plugins",
-            "time": "2026-04-01T20:12:27+00:00"
+            "time": "2026-04-01T20:57:25+00:00"
         },
         {
             "name": "publishpress/translations",
