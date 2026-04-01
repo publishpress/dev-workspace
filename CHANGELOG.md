@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.0.3] - 01 April, 2026
+
+- Fixed: Fix source path for scripts, sticking with the `/project` dir as the default one.
+
 [1.0.2] - 01 April, 2026
 
 - Fixed: Fixed `REPO_ROOT` calculation in `scripts/env-init.sh` overshooting the project root by one directory level when the package is installed via Composer at `vendor/publishpress/dev-workspace`. The traversal was corrected from `../../../..` (4 levels) to `../../..` (3 levels), resolving the `.env file not found` error on every `composer` command.
