@@ -7,7 +7,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
-        "plugin-name": "Fake Plugin",
+        "plugin-name": "fake-plugin",
         "plugin-slug": "fake-plugin",
         "plugin-folder": "fake-plugin",
         "plugin-lang-domain": "fake-plugin",
