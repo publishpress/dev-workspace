@@ -22,16 +22,13 @@ services:
         working_dir: "/project"
         volumes:
             - ../../../../:/project
-            - ../../../../dev-workspace-cache/.npm/_logs:/root/.npm/_logs
+            - ../../../../dev-workspace-cache/.npm:/root/.npm
             - ../../../../dev-workspace-cache/.oh-my-zsh/log:/root/.oh-my-zsh/log
             - ../../../../dev-workspace-cache/.config/gh:/root/.config/gh
-            - ../../../../dev-workspace-cache/.git:/root/.git
+            - ../../../../dev-workspace-cache/.git/config:/root/.gitconfig
+            - ../../../../dev-workspace-cache/.zsh_history:/root/.zsh_history
         environment:
             - INSIDE_DEV_CONTAINER=true
-            - HISTFILE=/root/.cache/.zsh_history
-            - NPM_CONFIG_CACHE=/root/.cache/.npm
-            - COMPOSER_HOME=/root/.cache/.composer
-            - GIT_CONFIG_GLOBAL=/root/.git/config
     ##############################################################################
     # Tests
     ##############################################################################
