@@ -33,12 +33,6 @@ Add the following to the plugin's `composer.json` first, then run `composer upda
 }
 ```
 
-Alternatively, use the CLI — Composer will prompt you to allow the plugin on first install:
-
-```bash
-composer require --dev publishpress/dev-workspace
-```
-
 Once installed, all shared scripts become available through `composer`. For example:
 
 ```bash
