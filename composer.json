@@ -15,16 +15,7 @@
     "require": {
         "php": "^7.4",
         "ext-json": "*",
-        "composer-plugin-api": "^2.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true,
-            "phpstan/extension-installer": true
-        }
-    },
-    "require-dev": {
+        "composer-plugin-api": "^2.0",
         "automattic/vipwpcs": "^3",
         "behat/behat": "^3.14",
         "codeception/module-asserts": "^3",
@@ -59,6 +50,13 @@
         "wp-cli/i18n-command": "^2.6",
         "wp-cli/wp-cli-bundle": "^2.10",
         "wp-coding-standards/wpcs": "^3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
+        }
     },
     "scripts": {
         "dev:shell": "vendor/publishpress/dev-workspace/scripts/run.sh",
