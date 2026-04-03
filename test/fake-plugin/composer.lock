@@ -5925,7 +5925,7 @@
             "source": {
                 "type": "git",
                 "url": "../..",
-                "reference": "be246e0ec38d7b901a87c36f2222bd9b497122de"
+                "reference": "eb68f3f6661e99a037da7d21901226171d06121b"
             },
             "require": {
                 "automattic/vipwpcs": "^3",
@@ -6265,7 +6265,7 @@
                     "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-php ./languages --allow-root"
                 ],
                 "config:phpcs": [
-                    "phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\""
+                    "vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\""
                 ],
                 "post-install-cmd": [
                     "@config:phpcs"
@@ -6287,7 +6287,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Shared Composer scripts for PublishPress plugins",
-            "time": "2026-04-02T21:27:07+00:00"
+            "time": "2026-04-03T19:01:23+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",

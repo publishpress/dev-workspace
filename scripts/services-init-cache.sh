@@ -22,7 +22,8 @@ fi
 # wp_test needs wp-content/mu-plugins to exist before the container starts so
 # Docker can bind-mount individual plugin files into that directory.
 [[ -d $CACHE_PATH/wp_test/wp-content/mu-plugins ]] || mkdir -p $CACHE_PATH/wp_test/wp-content/mu-plugins
-[[ -f $CACHE_PATH/.zsh_history ]] || touch $CACHE_PATH/.zsh_history
+[[ -d $CACHE_PATH/.zsh ]] || mkdir -p $CACHE_PATH/.zsh
+[[ -f $CACHE_PATH/.zsh/.zsh_history ]] || touch $CACHE_PATH/.zsh/.zsh_history
 [[ -f $CACHE_PATH/.bash_history ]] || touch $CACHE_PATH/.bash_history
 [[ -f $CACHE_PATH/.composer/auth.json ]] || echo '{}' > $CACHE_PATH/.composer/auth.json
 [[ -f $CACHE_PATH/.gitconfig/config ]] || touch $CACHE_PATH/.gitconfig/config

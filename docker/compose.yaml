@@ -26,10 +26,11 @@ services:
             - ${CACHE_PATH}/.oh-my-zsh/log:/root/.oh-my-zsh/log
             - ${CACHE_PATH}/.config/gh:/root/.config/gh
             - ${CACHE_PATH}/.gitconfig:/root/.gitconfig-vol
-            - ${CACHE_PATH}/.zsh_history:/root/.zsh_history
+            - ${CACHE_PATH}/.zsh:/root/.zsh-vol
         environment:
             - INSIDE_DEV_CONTAINER=true
             - GIT_CONFIG_GLOBAL=/root/.gitconfig-vol/config
+            - HISTFILE=/root/.zsh-vol/.zsh_history
     ##############################################################################
     # Tests
     ##############################################################################
