@@ -133,6 +133,9 @@ This replaces the legacy `dev-workspace/run` script. If you still have that file
 ## Requirements
 
 - Composer 2.x
+- PHP with the following extensions enabled (Composer and tooling expect them to be available):
+  - **ext-dom** — XML/HTML DOM (used by tooling that parses or generates markup)
+  - **ext-curl** — HTTP client support (used by packages and scripts that perform outbound requests)
 - Docker (for container-based scripts and tests)
 
 ## License
