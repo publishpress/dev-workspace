@@ -120,6 +120,16 @@ docker rmi publishpress/dev-workspace-terminal:publishpress-revisions   # exampl
 
 Use `docker image prune` or `docker system prune` if you want a broader cleanup; only remove images you no longer need.
 
+## Entering the development shell
+
+To open an interactive terminal inside the development container, run:
+
+```bash
+composer dev:shell
+```
+
+This replaces the legacy `dev-workspace/run` script. If you still have that file in your project root, delete it — the command above is the only supported entry point.
+
 ## Requirements
 
 - Composer 2.x
