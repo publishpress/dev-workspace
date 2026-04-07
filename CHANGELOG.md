@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.1.4] - 07 April, 2026
+
+- Changed: Display the destination path in the output of the local-sync.sh script.
+
 [1.1.3] - 03 April, 2026
 
 - Fixed: Docker service ports (db_test, mailhog) are now configurable via environment variables (`DB_TESTS_PORT`, `MAILHOG_WEB_PORT`, `MAILHOG_SMTP_PORT`) with backward-compatible defaults.
