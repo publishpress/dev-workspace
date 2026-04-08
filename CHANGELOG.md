@@ -3,7 +3,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[1.1.5] - 07 April, 2026
+[1.1.5] - 08 April, 2026
 
 - Fixed: Added an environment variable to control JSON translation generation; it is now disabled by default.
 
