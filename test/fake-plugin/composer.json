@@ -15,7 +15,7 @@
         "plugin-composer-package": "publishpress/fake-plugin"
     },
     "require-dev": {
-        "publishpress/dev-workspace": "dev-development",
+        "publishpress/dev-workspace": "dev-sandbox",
         "wp-coding-standards/wpcs": "^3",
         "publishpress/translations": "^1"
     },
