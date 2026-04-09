@@ -5921,7 +5921,7 @@
             "source": {
                 "type": "git",
                 "url": "../..",
-                "reference": "f0d17dcf8d8ff75ab5d8e6474489011c0f7a30b6"
+                "reference": "e499950843406a7d7b599e666d577acb552de645"
             },
             "require": {
                 "automattic/vipwpcs": "^3",
@@ -5961,6 +5961,7 @@
                 "wp-cli/wp-cli-bundle": "^2.10",
                 "wp-coding-standards/wpcs": "^3"
             },
+            "default-branch": true,
             "type": "composer-plugin",
             "extra": {
                 "class": "PublishPress\\DevWorkspace\\Plugin"
@@ -6248,7 +6249,7 @@
                     "@translate:php"
                 ],
                 "translate:pot": [
-                    "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root"
+                    "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,.cursor,.claude,dist,tests,lib,tmp,doc,.cache,dev-workspace-cache,.node_modules,.git,.zed,docs,languages. --allow-root"
                 ],
                 "translate:mo": [
                     "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-mo ./languages ./languages --allow-root"
@@ -6282,7 +6283,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Shared Composer scripts for PublishPress plugins",
-            "time": "2026-04-08T16:56:59+00:00"
+            "time": "2026-04-09T13:30:53+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
