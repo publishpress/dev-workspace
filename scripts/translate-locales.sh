@@ -7,5 +7,4 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 CSV="$("$SCRIPT_DIR/spaces-to-csv.sh" "${LANG_LOCALES:-}")"
 
-cd "$REPO_ROOT"
-exec "$REPO_ROOT/vendor/bin/publishpress-translate" --languages="$CSV"
+exec "vendor/bin/publishpress-translate" --languages="$CSV"

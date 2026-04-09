@@ -5921,7 +5921,7 @@
             "source": {
                 "type": "git",
                 "url": "../..",
-                "reference": "731cb74cd1fd06a9e1ba83883b71a29121388870"
+                "reference": "d92c95d908515e3f6a8bd2fc0f3b83e1a7479839"
             },
             "require": {
                 "automattic/vipwpcs": "^3",
@@ -6224,7 +6224,7 @@
                     "bash vendor/publishpress/dev-workspace/scripts/after-pr-merge.sh"
                 ],
                 "translate": [
-                    "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --languages=de_DE,fi,fil,id_ID,ja,ko_KR,nl_NL,ru_RU,yor",
+                    "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/publishpress-translate-locales.sh",
                     "@translate:audit"
                 ],
                 "translate:audit": [
@@ -6296,7 +6296,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Shared Composer scripts for PublishPress plugins",
-            "time": "2026-04-09T16:10:20+00:00"
+            "time": "2026-04-09T17:11:03+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
