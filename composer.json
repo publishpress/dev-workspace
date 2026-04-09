@@ -256,7 +256,7 @@
             "@translate:json",
             "@translate:php"
         ],
-        "translate:pot": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
+        "translate:pot": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,.cursor,.claude,dist,tests,lib,tmp,doc,.cache,dev-workspace-cache,.node_modules,.git,.zed,docs,languages. --allow-root",
         "translate:mo": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-mo ./languages ./languages --allow-root",
         "translate:json": "[[ $(grep -E '^GENERATE_TRANSLATION_JSON=(1|true)$' .env 2>/dev/null) ]] && vendor/publishpress/dev-workspace/scripts/run.sh bash ./vendor/publishpress/dev-workspace/scripts/lang-make-json.sh || echo \"Skipping JSON translation generation (set GENERATE_TRANSLATION_JSON=1 in .env to enable)\"",
 

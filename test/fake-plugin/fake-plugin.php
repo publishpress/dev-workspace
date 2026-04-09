@@ -10,3 +10,7 @@
  */
 
 defined('ABSPATH') || exit;
+
+echo __('Hello, world!', 'fake-plugin');
+echo __('Save', 'fake-plugin');
+echo __('Cancel', 'fake-plugin');
