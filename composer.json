@@ -245,6 +245,7 @@
             "bash vendor/publishpress/dev-workspace/scripts/after-pr-merge.sh"
         ],
         "translate": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --languages=de_DE,fi,fil,id_ID,ja,ko_KR,nl_NL,ru_RU,yor",
+        "translate:audit": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n audit ./languages",
         "translate:dry-run": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --dry-run",
         "translate:download": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --download",
         "translate:upload": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --upload",
