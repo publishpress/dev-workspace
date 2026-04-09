@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[UNRELEASED]
+
+- Added: Introduced the `translate:audit` command, leveraging `wp i18n audit` to identify issues in translation files.
+- Changed: Appended the `translate:audit` command to several `translate:` scripts, ensuring translation issues are automatically displayed at the end.
+
 [1.1.5] - 08 April, 2026
 
 - Fixed: Added an environment variable to control JSON translation generation; it is now disabled by default.
