@@ -50,6 +50,8 @@
         "wp-cli/wp-cli-bundle": "^2.10",
         "wp-coding-standards/wpcs": "^3"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
@@ -278,10 +280,12 @@
         "translate:cleanup": "rm languages/*.json languages/*.mo languages/*.php",
         "config:phpcs": "vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
         "post-install-cmd": [
-            "@config:phpcs"
+            "@config:phpcs",
+            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true"
         ],
         "post-update-cmd": [
-            "@config:phpcs"
+            "@config:phpcs",
+            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true"
         ],
         "pre-autoload-dump": "[ -f lib/composer.json ] && composer dumpautoload --working-dir=./lib || true",
         "pre-update-cmd": "[ -f lib/composer.json ] && composer update --working-dir=./lib || true",
@@ -368,8 +372,8 @@
         "translate:json": "Generate JSON translation files for JavaScript",
         "translate:php": "Generate PHP translation files for WordPress 6.5+",
         "config:phpcs": "Configure PHPCS installed_paths for this project",
-        "post-install-cmd": "After install: configure PHPCS paths",
-        "post-update-cmd": "After update: configure PHPCS paths",
+        "post-install-cmd": "After install: configure PHPCS paths and fix potomatic permissions",
+        "post-update-cmd": "After update: configure PHPCS paths and fix potomatic permissions",
         "pre-autoload-dump": "Dump lib autoload when lib/composer.json exists",
         "pre-update-cmd": "Update lib dependencies before the root update",
         "pre-install-cmd": "Install lib dependencies before the root install"
