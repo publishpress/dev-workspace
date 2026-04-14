@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-set -a
-source /project/.env
-set +a
+if [[ "${GENERATE_TRANSLATION_JSON:-}" != "1" && "${GENERATE_TRANSLATION_JSON:-}" != "true" ]]; then
+    echo "Skipping JSON translation generation (set GENERATE_TRANSLATION_JSON=1 in .env to enable)"
+    exit 0
+fi
 
 for locale in $LANG_LOCALES
 do
