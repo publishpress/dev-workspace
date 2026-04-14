@@ -249,6 +249,7 @@
         ],
         "translate": [
             "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/translate-locales.sh",
+            "@translate:compile",
             "@translate:audit"
         ],
         "translate:audit": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n audit ./languages --allow-root",
