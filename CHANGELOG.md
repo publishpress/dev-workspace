@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added: Introduced the `translate:audit` command, leveraging `wp i18n audit` to identify issues in translation files.
 - Changed: Updated `composer.json` to set the minimum stability to `dev`.
 - Changed: Updated the `translate` command to automatically run `translate:compile` at the end.
+- Changed: The `translate` command now uses all default languages automatically, removing the need to specify the LANG_LOCALES argument.
 - Changed: JSON translation generation can now be enabled by setting the GENERATE_TRANSLATION_JSON environment variable.
 
 [1.1.5] - 08 April, 2026
