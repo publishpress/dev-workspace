@@ -274,28 +274,19 @@
             "@translate:php",
             "@translate:audit"
         ],
-        "translate:pot": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,.cursor,.claude,dist,tests,lib,tmp,doc,.cache,dev-workspace-cache,.node_modules,.git,.zed,docs,languages. --allow-root",
-            "@translate:audit"
-        ],
-        "translate:mo": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-mo ./languages ./languages --allow-root",
-            "@translate:audit"
-        ],
-        "translate:json": [
-            "[[ $(grep -E '^GENERATE_TRANSLATION_JSON=(1|true)$' .env 2>/dev/null) ]] && vendor/publishpress/dev-workspace/scripts/run.sh bash ./vendor/publishpress/dev-workspace/scripts/lang-make-json.sh || echo \"Skipping JSON translation generation (set GENERATE_TRANSLATION_JSON=1 in .env to enable)\"",
-            "@translate:audit"
-        ],
-        "translate:php": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-php ./languages --allow-root",
-            "@translate:audit"
-        ],
+        "translate:pot": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,.cursor,.claude,.vscode,dist,tests,lib/vendor,tmp,doc,docs,.cache,dev-workspace-cache,.node_modules,.git,.zed,languages --allow-root",
+        "translate:mo": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-mo ./languages ./languages --allow-root",
+        "translate:json": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/lang-make-json.sh",
+        "translate:php": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-php ./languages --allow-root",
+        "translate:cleanup": "rm languages/*.json languages/*.mo languages/*.php",
         "config:phpcs": "vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
         "post-install-cmd": [
-            "@config:phpcs"
+            "@config:phpcs",
+            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true"
         ],
         "post-update-cmd": [
-            "@config:phpcs"
+            "@config:phpcs",
+            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true"
         ],
         "pre-autoload-dump": "[ -f lib/composer.json ] && composer dumpautoload --working-dir=./lib || true",
         "pre-update-cmd": "[ -f lib/composer.json ] && composer update --working-dir=./lib || true",
@@ -382,8 +373,8 @@
         "translate:json": "Generate JSON translation files for JavaScript",
         "translate:php": "Generate PHP translation files for WordPress 6.5+",
         "config:phpcs": "Configure PHPCS installed_paths for this project",
-        "post-install-cmd": "After install: configure PHPCS paths",
-        "post-update-cmd": "After update: configure PHPCS paths",
+        "post-install-cmd": "After install: configure PHPCS paths and fix potomatic permissions",
+        "post-update-cmd": "After update: configure PHPCS paths and fix potomatic permissions",
         "pre-autoload-dump": "Dump lib autoload when lib/composer.json exists",
         "pre-update-cmd": "Update lib dependencies before the root update",
         "pre-install-cmd": "Install lib dependencies before the root install"
