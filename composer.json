@@ -24,7 +24,6 @@
         "codeception/module-filesystem": "^3",
         "codeception/module-phpbrowser": "^3",
         "codeception/module-rest": "^3",
-        "codeception/module-sequence": "^3",
         "codeception/module-webdriver": "^3",
         "codeception/util-universalframework": "^1",
         "dealerdirect/phpcodesniffer-composer-installer": "^1",
@@ -60,28 +59,28 @@
         }
     },
     "scripts": {
-        "dev:shell": "vendor/publishpress/dev-workspace/scripts/run.sh",
-        "dev:shell:stop": "vendor/publishpress/dev-workspace/scripts/stop.sh",
+        "dev:shell": "bash vendor/publishpress/dev-workspace/scripts/run.sh",
+        "dev:shell:stop": "bash vendor/publishpress/dev-workspace/scripts/stop.sh",
         "build": "@pack:zip",
         "build:all": [
             "@build:js",
             "@translate:compile",
             "@pack:zip"
         ],
-        "pack:zip": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh zip",
-        "pack:zip:with-debug": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh zip --with-debug",
-        "pack:dir": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh dir",
-        "pack:dir:with-debug": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh dir --with-debug",
-        "pack:clean": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh clean",
-        "build:js-prod": "vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=production npx webpack --progress",
-        "build:js-dev": "vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=development npx webpack --progress",
+        "pack:zip": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/pack.sh zip",
+        "pack:zip:with-debug": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/pack.sh zip --with-debug",
+        "pack:dir": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/pack.sh dir",
+        "pack:dir:with-debug": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/pack.sh dir --with-debug",
+        "pack:clean": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/pack.sh clean",
+        "build:js-prod": "bash vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=production npx webpack --progress",
+        "build:js-dev": "bash vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=development npx webpack --progress",
         "build:js": [
             "@build:js-prod",
             "@build:js-dev"
         ],
-        "profile:js": "vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=production npx webpack --profile",
-        "watch:js": "vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=development npx webpack --watch --progress",
-        "get:version": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh version",
+        "profile:js": "bash vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=production npx webpack --profile",
+        "watch:js": "bash vendor/publishpress/dev-workspace/scripts/run.sh cross-env NODE_ENV=development npx webpack --watch --progress",
+        "get:version": "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/pack.sh version",
         "check:all": [
             "@check:php",
             "@lint:php",
@@ -99,185 +98,185 @@
             "@check:php-8.4",
             "@check:php-8.5"
         ],
-        "check:php-5.6": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 5.6 ./${PP_PLUGIN_SLUG}.php",
-        "check:php-7.2": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.2 ./${PP_PLUGIN_SLUG}.php",
-        "check:php-7.4": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.4",
-        "check:php-8.0": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.0",
-        "check:php-8.1": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.1",
-        "check:php-8.2": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.2",
-        "check:php-8.3": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.3",
-        "check:php-8.4": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
-        "check:php-8.5": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.5",
-        "lint:php": "vendor/publishpress/dev-workspace/scripts/run.sh phplint --no-cache",
-        "check:deps": "vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/check-dependencies.php ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
-        "check:longpath": "vendor/publishpress/dev-workspace/scripts/run.sh composer pack:dir && vendor/publishpress/dev-workspace/scripts/run.sh longpath dist/${PP_PLUGIN_SLUG}",
-        "lint:phpcs": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs",
-        "qa:phpstan": "vendor/publishpress/dev-workspace/scripts/run.sh phpstan",
+        "check:php-5.6": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 5.6 ./${PP_PLUGIN_SLUG}.php",
+        "check:php-7.2": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.2 ./${PP_PLUGIN_SLUG}.php",
+        "check:php-7.4": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.4",
+        "check:php-8.0": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.0",
+        "check:php-8.1": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.1",
+        "check:php-8.2": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.2",
+        "check:php-8.3": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.3",
+        "check:php-8.4": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
+        "check:php-8.5": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.5",
+        "lint:php": "bash vendor/publishpress/dev-workspace/scripts/run.sh phplint --no-cache",
+        "check:deps": "bash vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/check-dependencies.php ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
+        "check:longpath": "bash vendor/publishpress/dev-workspace/scripts/run.sh composer pack:dir && bash vendor/publishpress/dev-workspace/scripts/run.sh longpath dist/${PP_PLUGIN_SLUG}",
+        "lint:phpcs": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcs",
+        "qa:phpstan": "bash vendor/publishpress/dev-workspace/scripts/run.sh phpstan",
         "fix:cs": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh php-cs-fixer fix .",
-            "vendor/publishpress/dev-workspace/scripts/run.sh phpcbf --standard=.phpcs.xml"
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh php-cs-fixer fix .",
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh phpcbf --standard=.phpcs.xml"
         ],
         "fix:deps": "vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/merge-dependencies.sh ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
         "metrics": "vendor/publishpress/dev-workspace/scripts/run.sh phpmetrics --report-html=metrics --exclude=vendor,lib/vendor,tests,dist,.claude,.cursor,.github,.wordpress-org,.git,.zed,docs,languages.",
         "sync:local": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/local-sync.sh --watch"
         ],
         "sync:local:once": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/local-sync.sh"
         ],
         "sync:local:stop": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "pkill -f local-sync.sh || true"
         ],
         "sync:remote": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/sync-plugin-remote.sh --watch"
         ],
         "sync:remote:once": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/sync-plugin-remote.sh --once"
         ],
         "sync:remote:stop": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "pkill -f sync-plugin-remote.sh || true"
         ],
         "test": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/tests-run.sh $@"
         ],
         "test:up": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh up test",
             "@test:info"
         ],
         "test:driver": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "source ./.env && $CHROMEDRIVER_BINARY --port=$CHROMEDRIVER_PORT"
         ],
         "test:down": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh down test"
         ],
         "test:restart": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh restart test"
         ],
         "test:stop": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh stop test"
         ],
         "test:logs": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash -c 'cd vendor/publishpress/dev-workspace && set -a && source ../../../.env && set +a && docker compose -f docker/compose.yaml --profile test logs --tail=500'"
         ],
         "test:clean": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh cleanup test",
             "@test:clean-cache",
             "composer codecept clean"
         ],
         "test:clean-logs": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "rm -f dev-workspace-cache/logs/db_test/"
         ],
         "test:clean-cache": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "rm -rf dev-workspace-cache/wp_test",
             "rm -rf dev-workspace-cache/db_test"
         ],
         "test:db-export": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/tests-db-export.sh $@"
         ],
         "test:db-import": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/tests-db-import.sh $@"
         ],
         "test:db-logs": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/tests-db-logs.sh $@"
         ],
         "test:info": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh info test"
         ],
         "test:refresh": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/server.sh refresh test"
         ],
         "test:snippets": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "composer codecept gherkin:snippets $@"
         ],
         "test:steps": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "composer codecept gherkin:steps $@"
         ],
         "test:coverage": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "vendor/bin/codecept run --coverage --coverage-html $@"
         ],
         "test:debug": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "php -d xdebug.mode=debug -d xdebug.start_with_request=yes vendor/bin/codecept run $@"
         ],
         "codecept": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "./vendor/bin/codecept $@"
         ],
         "docker:cleanup": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "docker system prune -f"
         ],
-        "info:versions": "vendor/publishpress/dev-workspace/scripts/run.sh bash ./vendor/publishpress/dev-workspace/scripts/dependency-versions.sh",
-        "set:version": "vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/plugin-bump-version.php \"$@\"",
+        "info:versions": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash ./vendor/publishpress/dev-workspace/scripts/dependency-versions.sh",
+        "set:version": "bash vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/plugin-bump-version.php \"$@\"",
         "pre-release": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash ./vendor/publishpress/dev-workspace/scripts/pre-release.sh \"$@\"",
             "@translate:audit"
         ],
         "pr-link": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash ./vendor/publishpress/dev-workspace/scripts/pr-link.sh"
         ],
-        "deploy": "vendor/publishpress/dev-workspace/scripts/run.sh node ./vendor/publishpress/dev-workspace/scripts/custom-deploy/index.mjs",
+        "deploy": "bash vendor/publishpress/dev-workspace/scripts/run.sh node ./vendor/publishpress/dev-workspace/scripts/custom-deploy/index.mjs",
         "after-pr-merge": [
-            "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "bash vendor/publishpress/dev-workspace/scripts/after-pr-merge.sh"
         ],
         "translate": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/translate-locales.sh",
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/translate-locales.sh",
             "@translate:compile",
             "@translate:audit"
         ],
-        "translate:audit": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n audit ./languages --allow-root",
+        "translate:audit": "bash vendor/publishpress/dev-workspace/scripts/run.sh wp i18n audit ./languages --allow-root",
         "translate:dry-run": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --dry-run",
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --dry-run",
             "@translate:audit"
         ],
         "translate:download": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --download",
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --download",
             "@translate:audit"
         ],
-        "translate:upload": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --upload",
-        "translate:custom": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --languages",
+        "translate:upload": "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --upload",
+        "translate:custom": "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --languages",
         "translate:force": [
-            "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --force",
+            "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --force",
             "@translate:audit"
         ],
-        "translate:force-custom": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --force --languages",
+        "translate:force-custom": "bash vendor/publishpress/dev-workspace/scripts/run.sh vendor/bin/publishpress-translate --force --languages",
         "translate:compile": [
             "@translate:mo",
             "@translate:json",
             "@translate:php",
             "@translate:audit"
         ],
-        "translate:pot": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,.cursor,.claude,.vscode,dist,tests,lib/vendor,tmp,doc,docs,.cache,dev-workspace-cache,.node_modules,.git,.zed,languages --allow-root",
-        "translate:mo": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-mo ./languages ./languages --allow-root",
-        "translate:json": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/lang-make-json.sh",
-        "translate:php": "vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-php ./languages --allow-root",
+        "translate:pot": "bash vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-pot . ./languages/${PP_PLUGIN_LANG_DOMAIN}.pot --domain=${PP_PLUGIN_LANG_DOMAIN} --exclude=vendor,.wordpress-org,.github,.cursor,.claude,.vscode,dist,tests,lib/vendor,tmp,doc,docs,.cache,dev-workspace-cache,.node_modules,.git,.zed,languages --allow-root",
+        "translate:mo": "bash vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-mo ./languages ./languages --allow-root",
+        "translate:json": "bash vendor/publishpress/dev-workspace/scripts/run.sh bash vendor/publishpress/dev-workspace/scripts/lang-make-json.sh",
+        "translate:php": "bash vendor/publishpress/dev-workspace/scripts/run.sh wp i18n make-php ./languages --allow-root",
         "translate:cleanup": "rm languages/*.json languages/*.mo languages/*.php",
         "config:phpcs": "vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
         "post-install-cmd": [
