@@ -118,6 +118,8 @@ Add it to the plugin repository’s `.gitignore`:
 dev-workspace-cache/
 ```
 
+It is also excluded from the built/distributed package — it is listed in both `.rsync-filters-pre-build.default` and `.rsync-filters-post-build.default`, so no extra action is required when using the standard build pipeline.
+
 ### Docker image cleanup
 
 Older setups used **per-plugin image tags** (for example `publishpress/dev-workspace-terminal:publishpress-revisions`). All PublishPress plugins are expected to use the **same shared images** set via `TERMINAL_IMAGE_NAME`, `WP_IMAGE_NAME`, and `WPCLI_IMAGE_NAME` in `.env` (see the environment files section above).
