@@ -45,6 +45,44 @@ If the plugin already defined those commands under `scripts` in its own `compose
 
 If the project root still has a `dev-workspace` file delete it entirely. Tooling is installed under `vendor/publishpress/dev-workspace`; leaving the old path in place can confuse editors, scripts, or sync rules that treat `dev-workspace` as a separate tree.
 
+### GitHub authentication
+
+Composer fetches package metadata from GitHub's API. The unauthenticated rate limit (60 requests/hour) is exhausted quickly, and **Pro plugins require a token anyway because they reference private GitHub repositories**.
+
+Without a token you will see an error like:
+
+```
+GitHub API limit (60 calls/hr) is exhausted, could not fetch https://api.github.com/repos/...
+You need to provide a GitHub access token.
+```
+
+**Create a token**
+
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and generate a **classic** personal access token (or a fine-grained token scoped to the relevant repositories).
+2. Grant it the **`repo`** scope so it can read private repositories.
+3. Use short expiration times and only the minimum permissions necessary.
+
+**Configure Composer to use the token**
+
+The auth file location depends on where you are running `composer`:
+
+- **On your host machine** — `~/.composer/auth.json`
+- **Inside the dev container** (`composer dev:shell`) — `${CACHE_PATH}/.composer/auth.json`, where `CACHE_PATH` is the value set in your `.env` file (defaults to `dev-workspace-cache` at the project root)
+
+In both cases the file must contain:
+
+```json
+{
+    "github-oauth": {
+        "github.com": "ghp_YourPersonalAccessTokenHere"
+    }
+}
+```
+
+The `CACHE_PATH` directory is mounted into the container, so a token saved there persists across container restarts without needing to be re-added.
+
+After saving the file, re-run `composer update` and the rate-limit error should be gone.
+
 ### Remove duplicate Composer dependencies
 
 This package already **requires** the shared QA and test stack. After adding `publishpress/dev-workspace`, drop the same packages from the plugin’s own `require-dev` (and from `require` if they were only there for tooling) so you do not pin conflicting versions or install duplicates. Typical overlaps include:
