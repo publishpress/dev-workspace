@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# Run publishpress-translate with LANG_LOCALES from .env as a comma-separated list.
-# Intended to be called via run.sh after env-init.sh has loaded and exported LANG_LOCALES.
+# Runs publishpress-translate for all languages in LANG_LOCALES (from .env).
+# LANG_LOCALES should be set and env-init.sh sourced before running.
 set -euo pipefail
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/env-init.sh"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
