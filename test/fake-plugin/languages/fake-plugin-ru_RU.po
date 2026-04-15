@@ -1,0 +1,186 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Fake Plugin 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-09T14:01:25+00:00\n"
+"PO-Revision-Date: 2026-04-09 14:08+0000\n"
+"X-Generator: WP-CLI 2.13.0-alpha\n"
+"X-Domain: fake-plugin\n"
+">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
+
+#: fake-plugin.php:3
+#. Plugin Name of the plugin
+msgid "Fake Plugin"
+msgstr "Фейковый плагин"
+
+#: fake-plugin.php:4, fuzzy
+#. Plugin URI of the plugin
+msgid "https://publishpress.com"
+msgstr "https://publishpress.com"
+
+#: fake-plugin.php:5
+#. Description of the plugin
+msgid ""
+"A minimal fake WordPress plugin used to test publishpress/dev-workspace "
+"locally."
+msgstr ""
+"Минимальный фейковый плагин WordPress, используемый для тестирования "
+"publishpress/dev-workspace локально."
+
+#: fake-plugin.php:7, fuzzy
+#. Author of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: fake-plugin.php:25
+msgid "This is the first sample string for plain gettext."
+msgstr "Это первая примерная строка для простого gettext."
+
+#: fake-plugin.php:26
+msgid "This is the second sample string for plain gettext."
+msgstr "Это вторая примерная строка для простого gettext."
+
+#: fake-plugin.php:27
+msgid "This is the third sample string for plain gettext."
+msgstr "Это третья примерная строка для простого gettext."
+
+#: fake-plugin.php:31
+msgid "This sentence is printed with gettext using immediate echo."
+msgstr "Это предложение выводится с помощью gettext с немедленным echo."
+
+#: fake-plugin.php:35
+msgid "This line uses esc_html_e so unsafe markup cannot break the layout."
+msgstr ""
+"Эта строка использует esc_html_e, поэтому небезопасная разметка не может "
+"нарушить макет."
+
+#: fake-plugin.php:39
+msgid "This value uses esc_attr_e and belongs inside an HTML attribute."
+msgstr "Это значение использует esc_attr_e и принадлежит внутри HTML-атрибута."
+
+#: fake-plugin.php:43
+msgid "This line uses esc_html__ and returns a value instead of echoing it."
+msgstr "Эта строка использует esc_html__ и возвращает значение вместо его вывода."
+
+#: fake-plugin.php:44
+msgid "This line uses esc_attr__ for text stored in an attribute."
+msgstr "Эта строка использует esc_attr__ для текста, хранящегося в атрибуте."
+
+#: fake-plugin.php:69
+#. translators: %d: number of items
+#, php-format
+msgid "There is %d item in this plural-form test."
+msgid_plural "There are %d items in this plural-form test."
+msgstr[0] "В этом тесте с множественной формой %d элемент."
+msgstr[1] "В этом тесте с множественной формой %d элемента."
+msgstr[2] "В этом тесте с множественной формой %d элементов."
+
+#: fake-plugin.php:92
+#. translators: %s: a short word inserted into the sentence
+#, php-format
+msgid "This sentence has one slot for a word: today we say %s."
+msgstr "Это предложение имеет одно место для слова: сегодня мы говорим %s."
+
+#: fake-plugin.php:98
+#. translators: %1$s: earlier phrase, %2$s: later phrase (translators may reorder)
+#, php-format
+msgid "We name two things in source order: first %1$s, then %2$s."
+msgstr "Мы называем две вещи в порядке источника: сначала %1$s, затем %2$s."
+
+#: fake-plugin.php:105
+#. translators: %1$s and %2$s appear out of numerical order on purpose
+#, php-format
+msgid "The later clause mentions %2$s before the earlier clause mentions %1$s."
+msgstr ""
+"Позднее положение упоминает %2$s до того, как раннее положение упоминает "
+"%1$s."
+
+#: fake-plugin.php:113
+#. translators: %1$s is the product name, %2$s is the star rating markup or label
+#, php-format
+msgid "If you like %1$s, please leave us a %2$s rating. Thank you!"
+msgstr "Если вам нравится %1$s, пожалуйста, оставьте нам оценку в %2$s. Спасибо!"
+
+#: fake-plugin.php:120
+#. translators: %s: module title — control next to %1$s/%2$s strings (issue #81 compares these)
+#, php-format
+msgid "About %s"
+msgstr "О %s"
+
+#: fake-plugin.php:126
+#. translators: %1$s: name, %2$s: place, %3$s: time word (order may change per language)
+#, php-format
+msgid "Meet %1$s from %2$s at %3$s."
+msgstr "Встретьте %1$s из %2$s в %3$s."
+
+#: fake-plugin.php:134
+#. translators: %1$d: count, %2$s: unit label
+#, php-format
+msgid "We counted %1$d items and labeled the batch as %2$s."
+msgstr "Мы посчитали %1$d элементов и пометили партию как %2$s."
+
+#: fake-plugin.php:141
+#. translators: Numbered placeholders split across a line break in the source (multiline msgid).
+#, php-format
+msgid ""
+"The first line names %1$s,\n"
+"and the second line names %2$s."
+msgstr "Первая строка называет %1$s, а вторая строка называет %2$s."
+
+#: fake-plugin.php:152
+#. translators: %d: a whole number in a test phrase
+#, php-format
+msgid "The integer placeholder in this test reads exactly %d."
+msgstr "Целочисленный заполнитель в этом тесте читается как %d."
+
+#: fake-plugin.php:158
+msgid ""
+"Quotes inside one string can mix apostrophes and double quotes, like it's "
+"short and \"quoted\"."
+msgstr ""
+"Цитаты внутри одной строки могут смешивать апострофы и двойные кавычки, как "
+"в том, что это коротко и \"цитируется\"."
+
+#: fake-plugin.php:164
+msgid ""
+"This message is split across two lines in the source file.\n"
+"Please translate it as one natural sentence, not two separate labels."
+msgstr ""
+"Это сообщение разделено на две строки в исходном файле. Пожалуйста, "
+"переведите его как одно естественное предложение, а не как две отдельные "
+"метки."
+
+#: fake-plugin.php:47
+msgctxt "Button label: start recording audio or video."
+msgid "Record"
+msgstr "Запись"
+
+#: fake-plugin.php:52
+msgctxt "Noun: a single audio or video recording you can play back."
+msgid "Record"
+msgstr "Запись"
+
+#: fake-plugin.php:59
+msgctxt "Button label: close the dialog without keeping changes."
+msgid "Leave"
+msgstr "Оставить"
+
+#: fake-plugin.php:80
+#. translators: %s: number of messages
+#, php-format
+msgctxt "Count of admin notices about translation tests."
+msgid "You have %d message that needs gettext context."
+msgid_plural "You have %d messages that need gettext context."
+msgstr[0] "У вас %d сообщение, которому нужен контекст gettext."
+msgstr[1] "У вас %d сообщения, которым нужен контекст gettext."
+msgstr[2] "У вас %d сообщений, которым нужен контекст gettext."

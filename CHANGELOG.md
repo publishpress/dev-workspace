@@ -3,6 +3,19 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[1.1.7] - 15 April, 2026
+
+- Changed: Updated the default post-build rsync filters to exclude all `.env*` files.
+- Changed: Unified and improved the `.env.example` template in the `test/fake-plugin` directory for consistency.
+
+[1.1.6] - 14 April, 2026
+
+- Added: Introduced the `translate:audit` command, leveraging `wp i18n audit` to identify issues in translation files.
+- Changed: Updated `composer.json` to set the minimum stability to `dev`.
+- Changed: Updated the `translate` command to automatically run `translate:compile` at the end.
+- Changed: The `translate` command now uses all default languages automatically, removing the need to specify the LANG_LOCALES argument.
+- Changed: JSON translation generation can now be enabled by setting the GENERATE_TRANSLATION_JSON environment variable.
+
 [1.1.5] - 08 April, 2026
 
 - Fixed: Added an environment variable to control JSON translation generation; it is now disabled by default.

@@ -45,6 +45,44 @@ If the plugin already defined those commands under `scripts` in its own `compose
 
 If the project root still has a `dev-workspace` file delete it entirely. Tooling is installed under `vendor/publishpress/dev-workspace`; leaving the old path in place can confuse editors, scripts, or sync rules that treat `dev-workspace` as a separate tree.
 
+### GitHub authentication
+
+Composer fetches package metadata from GitHub's API. The unauthenticated rate limit (60 requests/hour) is exhausted quickly, and **Pro plugins require a token anyway because they reference private GitHub repositories**.
+
+Without a token you will see an error like:
+
+```
+GitHub API limit (60 calls/hr) is exhausted, could not fetch https://api.github.com/repos/...
+You need to provide a GitHub access token.
+```
+
+**Create a token**
+
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens) and generate a **classic** personal access token (or a fine-grained token scoped to the relevant repositories).
+2. Grant it the **`repo`** scope so it can read private repositories.
+3. Use short expiration times and only the minimum permissions necessary.
+
+**Configure Composer to use the token**
+
+The auth file location depends on where you are running `composer`:
+
+- **On your host machine** — `~/.composer/auth.json`
+- **Inside the dev container** (`composer dev:shell`) — `${CACHE_PATH}/.composer/auth.json`, where `CACHE_PATH` is the value set in your `.env` file (defaults to `dev-workspace-cache` at the project root)
+
+In both cases the file must contain:
+
+```json
+{
+    "github-oauth": {
+        "github.com": "ghp_YourPersonalAccessTokenHere"
+    }
+}
+```
+
+The `CACHE_PATH` directory is mounted into the container, so a token saved there persists across container restarts without needing to be re-added.
+
+After saving the file, re-run `composer update` and the rate-limit error should be gone.
+
 ### Remove duplicate Composer dependencies
 
 This package already **requires** the shared QA and test stack. After adding `publishpress/dev-workspace`, drop the same packages from the plugin’s own `require-dev` (and from `require` if they were only there for tooling) so you do not pin conflicting versions or install duplicates. Typical overlaps include:
@@ -79,7 +117,16 @@ Set the following keys in the plugin's `composer.json` `extra` section so the wo
 }
 ```
 
-Update **`.env.example`** (committed template) and **`.env`** (local, not committed) at the plugin root. Keep the same keys in both; use real values for your plugin. At minimum, include:
+Each plugin root must have two environment files:
+
+- **`.env.example`** — committed template with placeholder or default values; keep it in the repository so contributors know what variables are required.
+- **`.env`** — your local copy with real values; never commit it (add `.env` to `.gitignore`).
+
+The canonical reference for all keys and their expected format is the fake-plugin template in this repository:
+
+[github.com/publishpress/dev-workspace/blob/development/test/fake-plugin/.env.example](https://github.com/publishpress/dev-workspace/blob/development/test/fake-plugin/.env.example)
+
+Copy that file into the plugin root, rename it to `.env.example`, and fill in the values for your plugin. At minimum, set:
 
 ```bash
 PLUGIN_NAME="PublishPress Future"
@@ -97,6 +144,8 @@ Use the **same** `TERMINAL_IMAGE_NAME`, `WP_IMAGE_NAME`, and `WPCLI_IMAGE_NAME` 
 
 After editing `.env.example`, copy it to `.env`.
 
+Both `.env` and `.env.example` must be excluded from the built/distributed package. They are already listed in `.rsync-filters-pre-build.default` and `.rsync-filters-post-build.default` (the rsync filter files used during packaging), so no extra action is required as long as the plugin uses the standard build pipeline from this package.
+
 ### `dev-workspace-cache` directory
 
 Tools from this package create a `dev-workspace-cache` folder at the project root (or the path set by `CACHE_PATH` in `.env`). It holds local-only data: Docker volume data (for example WordPress and MySQL test instances), npm and shell caches inside containers, deploy debug logs, and similar artifacts. It is regenerated as needed and must not be committed.
@@ -106,6 +155,8 @@ Add it to the plugin repository’s `.gitignore`:
 ```
 dev-workspace-cache/
 ```
+
+It is also excluded from the built/distributed package — it is listed in both `.rsync-filters-pre-build.default` and `.rsync-filters-post-build.default`, so no extra action is required when using the standard build pipeline.
 
 ### Docker image cleanup
 
