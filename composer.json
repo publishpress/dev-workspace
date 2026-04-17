@@ -1,7 +1,7 @@
 {
     "name": "publishpress/dev-workspace",
     "type": "composer-plugin",
-    "version": "1.1.7",
+    "version": "1.1.8",
     "description": "Shared Composer scripts for PublishPress plugins",
     "license": "GPL-2.0-or-later",
     "autoload": {
@@ -24,7 +24,6 @@
         "codeception/module-filesystem": "^3",
         "codeception/module-phpbrowser": "^3",
         "codeception/module-rest": "^3",
-        "codeception/module-sequence": "^3",
         "codeception/module-webdriver": "^3",
         "codeception/util-universalframework": "^1",
         "dealerdirect/phpcodesniffer-composer-installer": "^1",
@@ -50,7 +49,7 @@
         "wp-cli/wp-cli-bundle": "^2.10",
         "wp-coding-standards/wpcs": "^3"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
@@ -109,7 +108,7 @@
         "check:php-8.4": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.4",
         "check:php-8.5": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.5",
         "lint:php": "vendor/publishpress/dev-workspace/scripts/run.sh phplint --no-cache",
-        "check:deps": "vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/check-dependencies.php ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
+        "check:deps": "vendor/publishpress/dev-workspace/scripts/run.sh php vendor/publishpress/dev-workspace/scripts/check-dependencies.php ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
         "check:longpath": "vendor/publishpress/dev-workspace/scripts/run.sh composer pack:dir && vendor/publishpress/dev-workspace/scripts/run.sh longpath dist/${PP_PLUGIN_SLUG}",
         "lint:phpcs": "vendor/publishpress/dev-workspace/scripts/run.sh phpcs",
         "qa:phpstan": "vendor/publishpress/dev-workspace/scripts/run.sh phpstan",
@@ -117,15 +116,15 @@
             "vendor/publishpress/dev-workspace/scripts/run.sh php-cs-fixer fix .",
             "vendor/publishpress/dev-workspace/scripts/run.sh phpcbf --standard=.phpcs.xml"
         ],
-        "fix:deps": "vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/merge-dependencies.sh ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
+        "fix:deps": "vendor/publishpress/dev-workspace/scripts/run.sh php vendor/publishpress/dev-workspace/scripts/merge-dependencies.sh ./lib ${PP_PLUGIN_COMPOSER_PACKAGE}",
         "metrics": "vendor/publishpress/dev-workspace/scripts/run.sh phpmetrics --report-html=metrics --exclude=vendor,lib/vendor,tests,dist,.claude,.cursor,.github,.wordpress-org,.git,.zed,docs,languages.",
         "sync:local": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/local-sync.sh --watch"
+            "vendor/publishpress/dev-workspace/scripts/local-sync.sh --watch"
         ],
         "sync:local:once": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/local-sync.sh"
+            "vendor/publishpress/dev-workspace/scripts/local-sync.sh"
         ],
         "sync:local:stop": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
@@ -133,11 +132,11 @@
         ],
         "sync:remote": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/sync-plugin-remote.sh --watch"
+            "vendor/publishpress/dev-workspace/scripts/sync-plugin-remote.sh --watch"
         ],
         "sync:remote:once": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/sync-plugin-remote.sh --once"
+            "vendor/publishpress/dev-workspace/scripts/sync-plugin-remote.sh --once"
         ],
         "sync:remote:stop": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
@@ -145,11 +144,11 @@
         ],
         "test": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/tests-run.sh $@"
+            "vendor/publishpress/dev-workspace/scripts/tests-run.sh $@"
         ],
         "test:up": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh up test",
+            "vendor/publishpress/dev-workspace/scripts/server.sh up test",
             "@test:info"
         ],
         "test:driver": [
@@ -158,15 +157,15 @@
         ],
         "test:down": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh down test"
+            "vendor/publishpress/dev-workspace/scripts/server.sh down test"
         ],
         "test:restart": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh restart test"
+            "vendor/publishpress/dev-workspace/scripts/server.sh restart test"
         ],
         "test:stop": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh stop test"
+            "vendor/publishpress/dev-workspace/scripts/server.sh stop test"
         ],
         "test:logs": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
@@ -174,7 +173,7 @@
         ],
         "test:clean": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh cleanup test",
+            "vendor/publishpress/dev-workspace/scripts/server.sh cleanup test",
             "@test:clean-cache",
             "composer codecept clean"
         ],
@@ -189,23 +188,23 @@
         ],
         "test:db-export": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/tests-db-export.sh $@"
+            "vendor/publishpress/dev-workspace/scripts/tests-db-export.sh $@"
         ],
         "test:db-import": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/tests-db-import.sh $@"
+            "vendor/publishpress/dev-workspace/scripts/tests-db-import.sh $@"
         ],
         "test:db-logs": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/tests-db-logs.sh $@"
+            "vendor/publishpress/dev-workspace/scripts/tests-db-logs.sh $@"
         ],
         "test:info": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh info test"
+            "vendor/publishpress/dev-workspace/scripts/server.sh info test"
         ],
         "test:refresh": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/server.sh refresh test"
+            "vendor/publishpress/dev-workspace/scripts/server.sh refresh test"
         ],
         "test:snippets": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
@@ -231,21 +230,21 @@
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
             "docker system prune -f"
         ],
-        "info:versions": "vendor/publishpress/dev-workspace/scripts/run.sh bash ./vendor/publishpress/dev-workspace/scripts/dependency-versions.sh",
-        "set:version": "vendor/publishpress/dev-workspace/scripts/run.sh php ./vendor/publishpress/dev-workspace/scripts/plugin-bump-version.php \"$@\"",
+        "info:versions": "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/dependency-versions.sh",
+        "set:version": "vendor/publishpress/dev-workspace/scripts/run.sh php vendor/publishpress/dev-workspace/scripts/plugin-bump-version.php \"$@\"",
         "pre-release": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash ./vendor/publishpress/dev-workspace/scripts/pre-release.sh \"$@\"",
+            "vendor/publishpress/dev-workspace/scripts/pre-release.sh \"$@\"",
             "@translate:audit"
         ],
         "pr-link": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash ./vendor/publishpress/dev-workspace/scripts/pr-link.sh"
+            "vendor/publishpress/dev-workspace/scripts/pr-link.sh"
         ],
-        "deploy": "vendor/publishpress/dev-workspace/scripts/run.sh node ./vendor/publishpress/dev-workspace/scripts/custom-deploy/index.mjs",
+        "deploy": "vendor/publishpress/dev-workspace/scripts/run.sh node vendor/publishpress/dev-workspace/scripts/custom-deploy/index.mjs",
         "after-pr-merge": [
             "vendor/publishpress/dev-workspace/scripts/ensure-not-container.sh",
-            "bash vendor/publishpress/dev-workspace/scripts/after-pr-merge.sh"
+            "vendor/publishpress/dev-workspace/scripts/after-pr-merge.sh"
         ],
         "translate": [
             "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/translate-locales.sh",
@@ -282,11 +281,13 @@
         "config:phpcs": "vendor/bin/phpcs --config-set installed_paths \"../../phpcsstandards/phpcsutils,../../phpcsstandards/phpcsextra,../../automattic/vipwpcs,../../phpcompatibility/php-compatibility,../../sirbrillig/phpcs-variable-analysis,../../publishpress/publishpress-phpcs-standards/standards,../../wp-coding-standards/wpcs\"",
         "post-install-cmd": [
             "@config:phpcs",
-            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true"
+            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true",
+            "chmod +x vendor/publishpress/dev-workspace/scripts/*.sh || true"
         ],
         "post-update-cmd": [
             "@config:phpcs",
-            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true"
+            "[ -f vendor/publishpress/translations/potomatic/potomatic.js ] && chmod +x vendor/publishpress/translations/potomatic/potomatic.js || true",
+            "chmod +x vendor/publishpress/dev-workspace/scripts/*.sh || true"
         ],
         "pre-autoload-dump": "[ -f lib/composer.json ] && composer dumpautoload --working-dir=./lib || true",
         "pre-update-cmd": "[ -f lib/composer.json ] && composer update --working-dir=./lib || true",
