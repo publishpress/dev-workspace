@@ -26,7 +26,6 @@ services:
             - ${CACHE_PATH}/.config/gh:/root/.config/gh
             - ${CACHE_PATH}/.gitconfig:/root/.gitconfig-vol
             - ${CACHE_PATH}/.zsh:/root/.zsh-vol
-            - ${DEV_WORKSPACE_DIR}/scripts:/project/vendor/publishpress/dev-workspace/scripts
         environment:
             - INSIDE_DEV_CONTAINER=true
             - GIT_CONFIG_GLOBAL=/root/.gitconfig-vol/config
