@@ -22,6 +22,12 @@ Add the following to the plugin's `composer.json` first, then run `composer upda
     "require-dev": {
         "publishpress/dev-workspace": "^1.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/publishpress/team-handbook.git"
+        }
+    ],
     "config": {
         "allow-plugins": {
             "publishpress/dev-workspace": true,
@@ -32,6 +38,8 @@ Add the following to the plugin's `composer.json` first, then run `composer upda
     }
 }
 ```
+
+Composer does **not** inherit `repositories` from this package. `publishpress/team-handbook` is a private GitHub repository and is not on Packagist, so the VCS entry above is required on every plugin **root** `composer.json`. Without it, `composer update` cannot resolve the handbook as a transitive dependency. A GitHub token with `repo` scope is required (see below).
 
 Once installed, all shared scripts become available through `composer`. For example:
 
@@ -70,7 +78,7 @@ If the project root still has a `dev-workspace` file delete it entirely. Tooling
 
 ### GitHub authentication
 
-Composer fetches package metadata from GitHub's API. The unauthenticated rate limit (60 requests/hour) is exhausted quickly, and **Pro plugins require a token anyway because they reference private GitHub repositories**.
+Composer fetches package metadata from GitHub's API. The unauthenticated rate limit (60 requests/hour) is exhausted quickly. **All plugins need a token** so Composer can clone the private `publishpress/team-handbook` repository. Pro plugins already required a token for their other private GitHub dependencies.
 
 Without a token you will see an error like:
 
@@ -114,7 +122,7 @@ This package already **requires** the shared QA and test stack. After adding `pu
 - **Static analysis and fixes** — `phpstan/phpstan`, `phpstan/extension-installer`, `szepeviktor/phpstan-wordpress`, `friendsofphp/php-cs-fixer`, `overtrue/phplint`, `phpmd/phpmd`, `phpmetrics/phpmetrics`
 - **Tests** — Codeception modules, `lucatume/wp-browser`, `behat/behat`, `phpunit/phpunit`, and related packages pulled in for acceptance tests
 - **CLI and i18n** — `wp-cli/wp-cli-bundle`, `wp-cli/i18n-command`
-- **Other dev tools** — e.g. `publishpress/translations`, `knplabs/github-api` with PSR-7 HTTP, `spatie/ray`, `symfony/process`
+- **Other dev tools** — e.g. `publishpress/translations`, `publishpress/team-handbook`, `knplabs/github-api` with PSR-7 HTTP, `spatie/ray`, `symfony/process`
 
 The complete and current list is the `require` section of this repository’s `composer.json`:
 

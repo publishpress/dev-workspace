@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[Unreleased]
+
+- Added: Require `publishpress/team-handbook` `^1.0` so plugins that install this workspace also get the handbook under `vendor/publishpress/team-handbook`.
+
 [1.8.14] - 03 Sep, 2026
 
 - Changed: Builder/terminal `DEV_WORKSPACE_VERSION` in `docker/compose.yaml` updated to `1.8.14`.
